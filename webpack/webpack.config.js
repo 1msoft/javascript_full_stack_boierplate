@@ -7,9 +7,7 @@ import strategies from './strategies';
 
 // 默认参数配置
 const defaultOptions = {
-    development: false,
-    production: false,
-    test: false,
+    debug: false,
     frontend: false,
     backend: false,
 };

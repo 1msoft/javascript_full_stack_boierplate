@@ -1,6 +1,7 @@
 'use strict';
 
 //import {ipcRenderer as ipc} from 'electron';
+import xxx from './xxx';
 
 import React from 'react';
 import ReactDOM from 'react-dom';
