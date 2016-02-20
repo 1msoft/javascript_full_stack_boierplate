@@ -7,6 +7,7 @@ import fs from 'fs';
 import path from 'path';
 
 import webpackConfigGenerator from './webpack.config';
+import db_init from '../server/config/models';
 
 /**
  * 构建处理函数
@@ -46,7 +47,14 @@ gulp.task('prod-back-end', (done) => {
 gulp.task('clean');
 
 // 重建数据库任务
-gulp.task('data:init');
+gulp.task('db:init', () => {
+    db_init(true);
+});
+
+// 初始化假数据任务
+gulp.task('db:mock', () => {
+    db_init(true);
+});
 
 // 构建任务 - for development
 gulp.task('dev', ['dev-front-end'], () => {

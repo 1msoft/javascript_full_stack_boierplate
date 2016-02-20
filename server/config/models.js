@@ -1,7 +1,9 @@
 'use strict';
 
-const knex = require('../config/knex');
-const db_init = require('../data/db_init');
+import 'babel-polyfill';
+
+const knex = require('./knex');
+const db_init = require('../../test/mock/db_init');
 
 module.exports = function (isDropExist) {
 

@@ -15,7 +15,7 @@ import routeConfig from './config/routes';
 /**
  * Server
  */
-const app = koa();
+const app = new koa();
 koaConfig(app, globalConfig);
 
 /**

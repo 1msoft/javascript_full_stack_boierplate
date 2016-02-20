@@ -3,7 +3,7 @@
 const co = require('co');
 const fs = require('co-fs');
 
-const config = require('../config/config');
+const config = require('../../global.config');
 
 module.exports = function (knex) {
     return co(function *() {

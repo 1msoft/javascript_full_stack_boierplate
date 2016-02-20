@@ -3,7 +3,7 @@
  * Knex initialization
  */
 
-const config = require('./config');
+const config = require('../../global.config');
 
 const knex = require('knex')({
     client: 'mysql',

@@ -12,7 +12,7 @@ let base = {
     app: {
         root: process.cwd(),
         env: env,
-        modelsPath: './data/base_data',// models 目录
+        modelsPath: './test/mock/base_data',// models 目录
     },
     interface: {
         switch: true,                  // 是否开启接口，true开启，false关闭
