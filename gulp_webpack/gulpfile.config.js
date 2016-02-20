@@ -71,4 +71,4 @@ gulp.task('dev', ['dev-front-end'], () => {
 });
 
 // 构建任务 - for production
-gulp.task('prod', ['prod-front-end', 'prod-back-end']);
+gulp.task('build', ['prod-front-end', 'prod-back-end']);
