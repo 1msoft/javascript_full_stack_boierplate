@@ -30,6 +30,9 @@ module.exports = function (app, config) {
         app.use(logger());
     }
 
+    /**
+     * webpack 的 webpack-dev-middleware 配置 - for development
+     */
     if (config.app.env === 'development') {
         const webpackConfig = webpackConfigGenerator({ frontend: true, debug: true });
         let compiler = webpack(webpackConfig);

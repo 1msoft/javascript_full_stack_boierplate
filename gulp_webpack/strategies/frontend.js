@@ -3,7 +3,7 @@
 import path from 'path';
 import _ from 'lodash';
 import webpack from 'webpack';
-import TransferWebpackPlugin from 'transfer-webpack-plugin';
+import CopyWebpackPlugin from 'copy-webpack-plugin';
 
 import styleConfigGenerator from './style';
 import globalConfig from '../../global.config';
@@ -76,9 +76,10 @@ export default (config, options) => {
             //Enables Hot Modules Replacement
             new webpack.HotModuleReplacementPlugin(),
             new webpack.optimize.CommonsChunkPlugin(/* chunkName= */'vendor', /* filename= */'vendor.bundle.js'),
-            new TransferWebpackPlugin([
-                { from: './server/templates', to: '..' }
-            ], rootPath)
+            new CopyWebpackPlugin([
+                { from: path.resolve(rootPath, './server/templates'), to: '..' },
+                { from: path.resolve(rootPath, 'global.config.js'), to: '..' },
+            ])
         ]
     };
 

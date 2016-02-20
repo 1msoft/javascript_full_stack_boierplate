@@ -1,3 +1,3 @@
-require('./gulp_webpack/register-babel');
+require('./register-babel');
 
 require('./gulp_webpack/gulpfile.config.js');
