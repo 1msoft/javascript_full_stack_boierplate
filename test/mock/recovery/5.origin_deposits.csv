@@ -1,0 +1,5 @@
+dddd
+serial_id,trade_id,trans_time,project_id,acct_id,acct_type,company_name,opposite_acct_name,opposite_acct_id,opposite_bank_name,opposite_bank_code,amount,balance,memo,match_id,match_type,status,is_winner,is_refunded,origin_serial_ids,remark,deposit_type
+1511300739461,66766Z9A,1444203620000,1,116020100100054140,1,伊伟华,伊伟华,6226095911376338,招商银行,308584000013,1.000000,1.000000,汇入|测试,,2,1,0,NULL,1511300739461,NULL,1
+1511300739462,66767CIO,1444205043000,1,116020100100054140,1,伊伟华,伊伟华,6226095911376338,招商银行,308584000013,1.200000,20.980000,汇入|测试,,1,1,0,NULL,1511300739462,NULL,1
+1511300739465,99991607,1446750747000,2,1160201001000541400001,2,陈之炜,陈之炜,11787138471,兴业银行福州华林支行,11713,0.100000,1.100000,转账,,2,1,0,NULL,1511300739465,NULL,1

@@ -6,7 +6,7 @@ import nodemon from 'nodemon';
 import fs from 'fs';
 import path from 'path';
 
-import webpackConfigGenerator from './webpack/webpack.config';
+import webpackConfigGenerator from './webpack.config';
 
 /**
  * 构建处理函数
@@ -16,7 +16,7 @@ function onBuild (done) {
         if (err) {
             console.log( 'Error', err );
         } else {
-            console.log( '\n[webpack]', stats.toString({ color: true }) );
+            console.log( '\n[webpack]', stats.toString({ colors: true }) );
         }
         if (done) {
             done();
@@ -24,46 +24,45 @@ function onBuild (done) {
     }
 }
 
-// 前端任务 - for development
+// 前端打包任务 - for development
 gulp.task('dev-front-end', (done) => {
     let config = webpackConfigGenerator({ frontend: true, debug: true });
     webpack( config ).run( onBuild(done) );
 });
 
-// 前端任务 - for production
+// 前端打包任务 - for production
 gulp.task('prod-front-end', (done) => {
     let config = webpackConfigGenerator({ frontend: true });
     webpack( config ).run( onBuild(done) );
 });
 
-// 后端任务 - for development
-gulp.task('dev-back-end', () => {
-    let config = webpackConfigGenerator({ backend: true, debug: true });
-
-    webpack( config ).watch({ aggregateTimeout: 10, poll: true }, (err, stats) => {
-        onBuild()(err, stats);
-    });
-});
-
-// 后端任务 - for production
+// 后端打包任务 - for production
 gulp.task('prod-back-end', (done) => {
     let config = webpackConfigGenerator({ backend: true });
     webpack( config ).run( onBuild(done) );
 });
 
-// 开发模式构建任务
-gulp.task('dev', ['dev-front-end', 'dev-back-end'], () => {
+// 清理发布文件夹任务
+gulp.task('clean');
+
+// 重建数据库任务
+gulp.task('data:init');
+
+// 构建任务 - for development
+gulp.task('dev', ['dev-front-end'], () => {
     nodemon({
         execMap: {
             js: 'node --harmony'
         },
-        script: 'build/backend/server.js',
+        script: 'server/server.dev.js',
         env: { 'NODE_ENV': 'development' },
         //ignore: ['*'],
-        watch: ['build/backend'],
+        watch: ['server', 'gulp_webpack'],
         ext: 'js html json',
     }).on('start', () => {
-        console.log('\n[nodemon] Server is started!\n');
+        console.log('\n[nodemon] Server has started!\n');
+    }).on('quit', () => {
+        console.log('\n[nodemon] Server has quit!\n');
     }).on('restart', (files) => {
         for (let file of files) {
             console.log(`\n[nodemon] file changed: ${file}`);
@@ -71,5 +70,5 @@ gulp.task('dev', ['dev-front-end', 'dev-back-end'], () => {
     });
 });
 
-// 生产模式构建任务
+// 构建任务 - for production
 gulp.task('prod', ['prod-front-end', 'prod-back-end']);

@@ -24,8 +24,8 @@ export default (config, options) => {
         context: contextDir,
         // 入口文件
         entry: {
-            app: './app.jsx',
-            vendor: ['react', 'react-dom', 'react-router', 'history'],
+            app: ['./app.jsx'],
+            vendor: ['react', 'react-dom', 'react-router'],
         },
 
         output: {
@@ -38,7 +38,7 @@ export default (config, options) => {
             // The filename of non-entry chunks 
             chunkFilename: debug ? '[name].chunk.js' : '[chunkhash:8].[name].chunk.min.js',
             // 热更新 chunks 文件名称
-            hotUpdateChunkFilename: debug ? '[id].js' : '[id].[chunkhash:8].min.js',
+            //hotUpdateChunkFilename: debug ? '[id].js' : '[id].[chunkhash:8].min.js',
             // The filename of the SourceMaps for the JavaScript files.
             sourceMapFilename: "debugging/[file].map",
         },

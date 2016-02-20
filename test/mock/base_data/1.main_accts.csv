@@ -1,0 +1,4 @@
+交易地区,账号,账户名,开户行,收报行号,银企直联地址,企业网银客户号,操作员账号,操作员密码,日利率,是否限制开标前查询,是否登录,是否启用子账户,子账户查询天数,子账户保留天数
+zone_name,acct_id,acct_name,bank_name,bank_num,bank_uri,cid,user_id,user_pass,interest_rate,query_limit,require_auth,subacct_enabled,subacct_query_days,subacct_remain_days
+350101,116020100100054140,福建英迈软件有限公司,兴业银行福州屏山支行,,http://192.168.1.104:8007,1100514658,emsoft01,test01,0,1,0,1,NULL,NULL
+350451,116020100100054112,奇妙物语有限公司,兴业银行三明分行,,http://192.168.1.104:8007,1100511234,emsoft02,test02,1.0,0,1,0,NULL,NULL

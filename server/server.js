@@ -1,14 +1,39 @@
 'use strict';
 
-import 'babel-polyfill';
+import 'babel-polyfill'; // es6 import support
 
-import webpack from 'webpack';
 import koa from 'koa';
-import views from 'co-view';
 
+/**
+ * Config import
+ */
+import globalConfig from '../global.config';
+import koaConfig from './config/koa';
+//import passportConfig from './config/passport';
+import routeConfig from './config/routes';
+
+/**
+ * Server
+ */
 const app = koa();
+koaConfig(app, globalConfig);
 
-app.use(function *(next) {
-    this.body = 'ff';
-});
-app.listen(3000);
+/**
+ * Passport
+ */
+//passportConfig();
+
+/**
+ * Routes
+ */
+routeConfig(app);
+
+/**
+ * Start Server
+ */
+app.listen(globalConfig.app.port);
+
+console.log('Server started, listening on port: ' + globalConfig.app.port);
+console.log('Environment:' + globalConfig.app.env);
+
+export default app;

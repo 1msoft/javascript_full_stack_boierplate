@@ -1,0 +1,5 @@
+dddd,,
+role_name,role_desc,permission_code
+admin,管理员,23037
+user,普通用户,0
+manager,主管,0
