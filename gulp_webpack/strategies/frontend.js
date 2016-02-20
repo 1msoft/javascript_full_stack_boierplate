@@ -3,9 +3,12 @@
 import path from 'path';
 import _ from 'lodash';
 import webpack from 'webpack';
+import TransferWebpackPlugin from 'transfer-webpack-plugin';
 
 import styleConfigGenerator from './style';
+import globalConfig from '../../global.config';
 
+const rootPath = globalConfig.app.root;
 const contextDir = path.resolve(process.cwd(), 'app');
 const nodeModulesDir = path.resolve(process.cwd(), 'node_modules');
 const outputDir = path.resolve(process.cwd(), 'build', 'frontend');
@@ -73,10 +76,9 @@ export default (config, options) => {
             //Enables Hot Modules Replacement
             new webpack.HotModuleReplacementPlugin(),
             new webpack.optimize.CommonsChunkPlugin(/* chunkName= */'vendor', /* filename= */'vendor.bundle.js'),
-            // // 移动文件
-            // new TransferWebpackPlugin([
-            //     { from: './' }
-            // ], path.resolve(__dirname, 'app')),
+            new TransferWebpackPlugin([
+                { from: './server/templates', to: '..' }
+            ], rootPath)
         ]
     };
 

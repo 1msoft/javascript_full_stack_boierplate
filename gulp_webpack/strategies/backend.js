@@ -73,7 +73,7 @@ export default (config, options) => {
             new webpack.BannerPlugin(
                 'require("source-map-support").install();',
                 { raw: true, entryOnly: false }
-            )
+            ),
         ],
 
         // 查找依赖文件配置

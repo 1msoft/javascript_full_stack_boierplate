@@ -11,7 +11,7 @@ class App extends React.Component {
     }
 
     render () {
-        return <div>1f11ffffffxffffffxff</div>;
+        return <div>1fff</div>;
     }
 
 }

@@ -12,7 +12,7 @@ const views = require('co-view');
 
 const config = require('../../global.config');
 var STATIC_FILES_MAP = {};
-var SERVE_OPTIONS = { maxAge: 365 * 24 * 60 * 60 };
+var SERVE_OPTIONS = { prefix:'assets', maxAge: 365 * 24 * 60 * 60 };
 
 import webpack from 'webpack';
 import webpackDevMiddleware from 'koa-webpack-dev-middleware';
@@ -30,25 +30,27 @@ module.exports = function (app, config) {
         app.use(logger());
     }
 
-    const webpackConfig = webpackConfigGenerator({ frontend: true, debug: true });
-    let compiler = webpack(webpackConfig);
+    if (config.app.env === 'development') {
+        const webpackConfig = webpackConfigGenerator({ frontend: true, debug: true });
+        let compiler = webpack(webpackConfig);
 
-    app.use(webpackDevMiddleware(compiler, {
-        noInfo: true,
-        watchOptions: {
-            aggregateTimeout: 300,
-            poll: true,
-        },
-        stats: {
-            colors: true,
-        },
-        publicPath: webpackConfig.output.publicPath,
-    }));
+        app.use(webpackDevMiddleware(compiler, {
+            noInfo: true,
+            watchOptions: {
+                aggregateTimeout: 300,
+                poll: true,
+            },
+            stats: {
+                colors: true,
+            },
+            publicPath: webpackConfig.output.publicPath,
+        }));
 
-    app.use(function* (next) {
-        yield webpackHotMiddleware(compiler).bind(null, this.req, this.res);
-        yield next;
-    });
+        app.use(function* (next) {
+            yield webpackHotMiddleware(compiler).bind(null, this.req, this.res);
+            yield next;
+        });
+    }
 
     //app.use(errorHandler({ debug: true }));
     /**
@@ -70,7 +72,7 @@ module.exports = function (app, config) {
     });
 
     if (config.app.env === "production") {
-        app.use(serve(path.join(config.app.root, "build", "public"), SERVE_OPTIONS, STATIC_FILES_MAP));
+        app.use(serve(path.resolve(config.app.root, "build", "frontend"), SERVE_OPTIONS, STATIC_FILES_MAP));
     }
 
     app.use(function *(next) {
