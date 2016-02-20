@@ -76,10 +76,6 @@ export default (config, options) => {
             //Enables Hot Modules Replacement
             new webpack.HotModuleReplacementPlugin(),
             new webpack.optimize.CommonsChunkPlugin(/* chunkName= */'vendor', /* filename= */'vendor.bundle.js'),
-            new CopyWebpackPlugin([
-                { from: path.resolve(rootPath, './server/templates'), to: '..' },
-                { from: path.resolve(rootPath, 'global.config.js'), to: '..' },
-            ])
         ]
     };
 

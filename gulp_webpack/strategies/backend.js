@@ -1,10 +1,12 @@
 'use strict';
 
 import webpack from 'webpack';
+import CopyWebpackPlugin from 'copy-webpack-plugin';
 import _ from 'lodash';
 import path from 'path';
 import fs from 'fs';
 
+const rootPath = process.cwd();
 const contextDir = path.resolve(process.cwd(), 'server');
 const nodeModulesDir = path.resolve(process.cwd(), 'node_modules');
 const outputDir = path.resolve(process.cwd(), 'build', 'backend');
@@ -26,6 +28,8 @@ export default (config, options) => {
         .forEach( (mod) => {
             nodeModules[mod] = 'commonjs ' + mod;
         });
+    
+    let externalModules = _.merge(nodeModules, {'../global.config': 'commonjs ../global.config'});
 
     let thisConfig = {
         // The base directory (absolute path!) for resolving the entry option.
@@ -33,7 +37,6 @@ export default (config, options) => {
         // 入口文件
         entry: {
             server: './server.js',
-            //vendor: ['koa'],
         },
 
         output: {
@@ -51,7 +54,7 @@ export default (config, options) => {
             //sourceMapFilename: "debugging/[file].map",
         },
 
-        externals: nodeModules,
+        externals: externalModules,
 
         target: 'node',
 
@@ -74,6 +77,10 @@ export default (config, options) => {
                 'require("source-map-support").install();',
                 { raw: true, entryOnly: false }
             ),
+            new CopyWebpackPlugin([
+                { from: './templates/index.html', to: '..' },
+                { from: '../global.config.js', to: '..' },
+            ]),
         ],
 
         // 查找依赖文件配置
