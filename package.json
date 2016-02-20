@@ -62,6 +62,7 @@
     "koa-static-cache": "^3.1.4",
     "lodash": "^4.4.0",
     "moment": "^2.11.2",
+    "mongodb": "^2.1.7",
     "mysql": "^2.10.2",
     "passport-local": "^1.0.0",
     "react": "^0.14.7",
