@@ -3,7 +3,7 @@
 const path =require('path');
 const _ = require('lodash');
 
-const env = process.env.NODE_ENV = process.env.NODE_ENV || 'development';
+const NODE_ENV = process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 
 /**
  * 应用基本配置
@@ -11,7 +11,7 @@ const env = process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 let base = {
     app: {
         root: process.cwd(),
-        env: env,
+        env: NODE_ENV,
         modelsPath: './test/mock/base_data',// models 目录
     },
     interface: {
@@ -73,4 +73,4 @@ let sysConfig = {
 /**
  * 合并并返回配置对象
  */
-module.exports = _.merge(base, specific[env], sysConfig);
+module.exports = _.merge(base, specific[NODE_ENV], sysConfig);

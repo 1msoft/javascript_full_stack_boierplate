@@ -1,6 +1,6 @@
 'use strict';
 
-var index = function* (next) {
+var index = function *(next) {
     this.body = yield this.render('index');
 }
 

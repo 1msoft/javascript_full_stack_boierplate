@@ -1,20 +1,20 @@
 'use strict';
 
-import ExtractTextPlugin, { extract } from "extract-text-webpack-plugin";
+import ExtractTextPlugin, { extract } from 'extract-text-webpack-plugin';
 
 export default (config, options) => {
 
   const stylesheetLoaders = [
-    { test: /\.css/, loader: "css" },
-    //{ test: /\.less/, loader: "css!less" },
+    { test: /\.css/, loader: 'css' },
+    //{ test: /\.less/, loader: 'css!less' },
   ];
 
   let loaders = [];
   for (let loader of stylesheetLoaders) {
     if (options.prerender) {
-      loader.loader = "null";
+      loader.loader = 'null';
     } else if (options.debug) {
-      loader.loader = extract("style", loader.loader);
+      loader.loader = extract('style', loader.loader);
     } else {
       loader.loader = `style!${loader.loader}`;
     }
@@ -24,7 +24,7 @@ export default (config, options) => {
   config.module.loaders = config.module.loaders.concat(loaders);
 
   if (options.separateStylesheet) {
-    config.plugins.push(new ExtractTextPlugin("[name].css"));
+    config.plugins.push(new ExtractTextPlugin('[name].css'));
   }
   return config;
 };

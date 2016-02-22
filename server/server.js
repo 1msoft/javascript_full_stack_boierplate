@@ -2,7 +2,7 @@
 
 import 'babel-polyfill'; // es6 import support
 
-import koa from 'koa';
+import Koa from 'koa';
 
 /**
  * Config import
@@ -15,7 +15,7 @@ import routeConfig from './config/routes';
 /**
  * Server
  */
-const app = new koa();
+const app = new Koa();
 koaConfig(app, globalConfig);
 
 /**

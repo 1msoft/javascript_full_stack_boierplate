@@ -12,7 +12,7 @@ const rootPath = globalConfig.app.root;
 const contextDir = path.resolve(process.cwd(), 'app');
 const nodeModulesDir = path.resolve(process.cwd(), 'node_modules');
 const outputDir = path.resolve(process.cwd(), 'build', 'frontend');
-const publicPath = '/assets/';
+const pubPath = '/assets/';
 
 export default (config, options) => {
 
@@ -35,7 +35,7 @@ export default (config, options) => {
             // 打包文件路径
             path: outputDir,
             // 网站运行时打包文件的访问路径
-            publicPath: publicPath,
+            publicPath: pubPath,
             // 打包文件名称
             filename: debug ? '[name].js' : '[chunkhash:8].[name].min.js',
             // The filename of non-entry chunks 
@@ -43,7 +43,7 @@ export default (config, options) => {
             // 热更新 chunks 文件名称
             //hotUpdateChunkFilename: debug ? '[id].js' : '[id].[chunkhash:8].min.js',
             // The filename of the SourceMaps for the JavaScript files.
-            sourceMapFilename: "debugging/[file].map",
+            sourceMapFilename: 'debugging/[file].map',
         },
 
         devtool: debug ? 'cheap-module-eval-source-map' : 'source-map',

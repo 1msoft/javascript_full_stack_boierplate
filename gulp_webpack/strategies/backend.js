@@ -10,7 +10,7 @@ const rootPath = process.cwd();
 const contextDir = path.resolve(process.cwd(), 'server');
 const nodeModulesDir = path.resolve(process.cwd(), 'node_modules');
 const outputDir = path.resolve(process.cwd(), 'build', 'backend');
-const publicPath = '/assets/';
+const pubPath = '/assets/';
 
 export default (config, options) => {
 
@@ -43,7 +43,7 @@ export default (config, options) => {
             // 打包文件路径
             path: outputDir,
             // 网站运行时打包文件的访问路径
-            publicPath: publicPath,
+            publicPath: pubPath,
             // 打包文件名称
             filename: debug ? '[name].js' : '[name].min.js',
             // The filename of non-entry chunks 
