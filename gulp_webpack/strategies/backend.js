@@ -66,9 +66,7 @@ export default (config, options) => {
         debug: debug ? true : false,
 
         module: {
-            loaders: [
-                { test: /\.js$/, exclude: /node_modules/, loaders: ['babel'] },
-            ]
+            loaders: [],
         },
 
         plugins: [

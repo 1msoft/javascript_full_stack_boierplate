@@ -52,15 +52,6 @@ export default (config, options) => {
 
         module: {
             loaders: [
-                {
-                    test: /\.(js|jsx)$/,
-                    loaders: [
-                        // 'react-hot', 
-                        'babel?presets[]=react,presets[]=es2015'
-                    ], //react-hot is like browser sync and babel loads jsx and es6-7
-                    exclude: [nodeModulesDir],
-                    plugins: ['transform-runtime'],
-                },
                 { test: /\.json/, loader: 'json' },
                 { test: /\.(woff|woff2)/, loader: 'url?limit=100000' },
                 { test: /\.(png|jpg|jpeg|gif|svg)/, loader: 'url?limit=100000' },

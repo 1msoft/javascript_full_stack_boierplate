@@ -5,6 +5,7 @@ import backend from './backend';
 //import optimize from './optimize';
 import devServer from './devServer';
 import eslint from './eslint';
+import babel from './babel';
 
 export default [
     frontend,
@@ -12,4 +13,5 @@ export default [
     //optimize,
     devServer,
     eslint,
+    babel,
 ];
