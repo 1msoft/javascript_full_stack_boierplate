@@ -6,24 +6,24 @@
 ## 概述
 我们设想的javascript全栈开发，流程如下：
     
-    + 编辑
-    + -> 工作调度
-        + -> Build/打包
-            + -> 编译/转译
-        + -> 测试
-            + -> BDD
-            + -> UI Test
-        + -> 发布
-            -> Docker
-            -> 补丁/migrate
++ 编辑
++ -> 工作调度
+    + -> Build/打包
+        + -> 编译/转译
+    + -> 测试
+        + -> BDD
+        + -> UI Test
+    + -> 发布
+        -> Docker
+        -> 补丁/migrate
             
 基于以上的流程，我们设定了对应的工具链
-   + 编辑器/IDE：VSC or (ATOM，Sublime Text)
-   + 工作管理：Gulp
-   + 打包：Webpack
-   + 转译：Babel for webpack(Loader)
-   + 测试：mocha，karma
-   + 发布：Docker or PM2
++ 编辑器/IDE：VSC or (ATOM，Sublime Text)
++ 工作管理：Gulp
++ 打包：Webpack
++ 转译：Babel for webpack(Loader)
++ 测试：mocha，karma
++ 发布：Docker or PM2
    
    
 
