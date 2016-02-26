@@ -10,16 +10,16 @@ var serve = require('koa-static-cache');
 const errorHandler = require('koa-errorhandler');
 const views = require('co-view');
 
-const config = require('../../global.config');
+const config = require('../../../global.config');
 var STATIC_FILES_MAP = {};
-var SERVE_OPTIONS = { prefix:'assets', maxAge: 365 * 24 * 60 * 60 };
+var SERVE_OPTIONS = { prefix:'/assets/', maxAge: 365 * 24 * 60 * 60 };
 
 import webpack from 'webpack';
 import webpackDevMiddleware from 'koa-webpack-dev-middleware';
 import webpackHotMiddleware from 'webpack-hot-middleware';
-import webpackConfigGenerator from '../../gulp_webpack/webpack.config';
+import clientConfigGenerator from '../../../webpack/webpack.client.config';
 
-module.exports = function (app, config) {
+export default function (app, config) {
 
     if (!config.app.keys) {
         throw new Error('Please add session secret key in the config file!');
@@ -34,7 +34,7 @@ module.exports = function (app, config) {
      * webpack 的 webpack-dev-middleware 配置 - for development
      */
     if (config.app.env === 'development') {
-        const webpackConfig = webpackConfigGenerator({ frontend: true, debug: true });
+        const webpackConfig = clientConfigGenerator({ debug: true });
         let compiler = webpack(webpackConfig);
 
         app.use(webpackDevMiddleware(compiler, {
@@ -75,12 +75,16 @@ module.exports = function (app, config) {
     });
 
     if (config.app.env === 'production') {
-        app.use(serve(path.resolve(config.app.root, 'build', 'frontend'), SERVE_OPTIONS, STATIC_FILES_MAP));
+        app.use(serve(path.resolve(config.app.outputPath, 'client'), SERVE_OPTIONS, STATIC_FILES_MAP));
     }
 
     app.use(function *(next) {
-        this.render = views(path.resolve(config.app.root, './server/templates'), {
-        map: { html: 'swig' },
+        let indexPath = config.app.env === 'production'
+            ? config.app.outputPath
+            : path.resolve(config.app.serverPath, 'templates');
+
+        this.render = views(indexPath, {
+            map: { html: 'swig' },
             cache : config.app.env === 'development' ? 'memory' : false,
         });
         yield next;

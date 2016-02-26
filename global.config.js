@@ -10,9 +10,19 @@ const NODE_ENV = process.env.NODE_ENV = process.env.NODE_ENV || 'development';
  */
 let base = {
     app: {
-        root: process.cwd(),
         env: NODE_ENV,
-        modelsPath: './test/mock/base_data',// models 目录
+        root: process.cwd(),
+
+        clientPath: path.resolve(process.cwd(), 'src', 'client'),         // 前端代码目录
+        serverPath: path.resolve(process.cwd(), 'src', 'server'),         // 后端代码目录
+        modelsPath: './test/mock/base_data',                              // models 目录
+        
+        publicPath: '/assets/',                                           // 浏览器访问路径
+        outputPath: path.resolve(process.cwd(), 'build'),                  // 项目发布路径
+        clientOutputPath: path.resolve(process.cwd(), 'build', 'client'), // 前端文件发布路径
+        serverOutputPath: path.resolve(process.cwd(), 'build', 'server'), // 后端文件发布路径
+        
+        nodeModulesPath: path.resolve(process.cwd(), 'node_modules'),     // npm 安装依赖包文件夹路径
     },
 };
 
