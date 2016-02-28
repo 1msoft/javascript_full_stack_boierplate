@@ -40,7 +40,7 @@ export default (options) => {
         entry: {
             server: [
                 'webpack/hot/poll?1000',  // 轮询更新内容的代码
-                path.resolve(globalConfig.app.serverPath, 'server.js')    // 项目入口文件
+                path.resolve(globalConfig.app.serverPath, 'server.dev.js')    // 项目入口文件
             ]
         },
 

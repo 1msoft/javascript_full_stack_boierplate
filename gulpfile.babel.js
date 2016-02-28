@@ -1,6 +1,6 @@
 'use strict';
 
-const gulp = require('gulp');
+import gulp from 'gulp';
 
 import gulpTaskGenerator from './gulpfile.tasks';
 
