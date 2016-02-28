@@ -2,13 +2,13 @@
   "name": "javascript_full_stack_boilerplate",
   "version": "1.0.0",
   "description": "不像Java/C#等编程语言拥有完善的编程工具，javascript更像是黑客的语言，语言的可定制性很高，各种开发工具更是百花齐放，完全没有稳定下来的意思。 为了更好的推进javascript应用开发工程化，，需要有人专门收集和整合现有优秀的开发工具，库和UI组件等，力求做到开发效率最大化。本项目为以reactjs+webpack 的 boilerplate.",
-  "main": "./build/backend/server.js",
+  "main": "./build/server/server.min.js",
   "scripts": {
-    "dev": "gulp dev",
+    "dev": "gulp dev & NODE_ENV=development node --harmony ./build/server/server.js",
     "db:init": "gulp db:init",
     "db:mock": "gulp mock",
     "build": "gulp build",
-    "deploy": "gulp build && NODE_ENV=production node --harmony ./build/backend/server.min.js",
+    "deploy": "gulp build & NODE_ENV=production node --harmony ./build/server/server.min.js",
     "pm2": "gulp build && pm2 start pm2.json",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -50,6 +50,10 @@
     "react-transform-catch-errors": "^1.0.2",
     "react-transform-hmr": "^1.0.2",
     "redbox-react": "^1.2.2",
+    "redux-devtools": "^3.1.1",
+    "redux-devtools-dock-monitor": "^1.1.0",
+    "redux-devtools-log-monitor": "^1.0.4",
+    "redux-logger": "^2.6.0",
     "server-destroy": "^1.0.1",
     "style-loader": "^0.13.0",
     "url-loader": "^0.5.7",
@@ -61,6 +65,8 @@
     "co-fs": "^1.2.0",
     "co-view": "0.0.1",
     "history": "^2.0.0",
+    "humps": "^1.0.0",
+    "isomorphic-fetch": "^2.2.1",
     "knex": "^0.10.0",
     "koa": "^1.1.2",
     "koa-bodyparser": "^2.0.1",
@@ -74,9 +80,12 @@
     "moment": "^2.11.2",
     "mongodb": "^2.1.7",
     "mysql": "^2.10.2",
+    "normalizr": "^2.0.0",
     "passport-local": "^1.0.0",
     "react": "^0.14.7",
     "react-dom": "^0.14.7",
-    "react-router": "^2.0.0"
+    "react-router": "^2.0.0",
+    "react-router-redux": "^4.0.0",
+    "redux-thunk": "^1.0.3"
   }
 }

@@ -67,7 +67,7 @@ export default (options) => {
 
         // 查找依赖文件配置
         resolve: {
-            extensions: ['', '.js', 'jsx', '.css', '.png', '.jpg'], // 自动补全识别后缀
+            extensions: ['', '.js', '.jsx', '.css', '.png', '.jpg'], // 自动补全识别后缀
         },
         plugins: [
             //Enables Hot Modules Replacement

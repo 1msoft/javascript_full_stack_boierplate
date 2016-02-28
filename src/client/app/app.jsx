@@ -2,26 +2,21 @@
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-
 import {Router, browserHistory, Route, IndexRoute, NotFoundRoute, Redirect } from 'react-router';
+import { createStore } from 'redux';
+import { Provider } from 'react-redux';
+import { syncHistoryWithStore } from 'react-router-redux';
 
-class App extends React.Component {
-    constructor (props) {
-        super(props);
-    }
+import configureStore from './store';
+import Root from './containers/Root';
 
-    render () {
-        return <div>hello world!</div>;
-    }
+// store
+const store = configureStore();
 
-}
-
-const routes = (
-    <Route path='/' component={App}>
-    </Route>
-);
+// history
+const history = syncHistoryWithStore(browserHistory, store);
 
 ReactDOM.render(
-    <Router history={browserHistory} onUpdate={() => window.scrollTo(0, 0)}>{routes}</Router>,
+    <Root store={store} history={history} />,
     document.getElementById('app')
 );
