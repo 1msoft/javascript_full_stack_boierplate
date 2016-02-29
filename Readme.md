@@ -107,7 +107,7 @@ export VSCODE_TSJS=1
 
 ### 常用热键
 + CMD=WIN，OPT=ALT
-+ CMD+ : 
++ CMD+p : 
     - filename - jump to file
     - > command palette
     - ？HELP
