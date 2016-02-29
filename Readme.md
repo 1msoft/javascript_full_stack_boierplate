@@ -82,6 +82,75 @@ postcss用于支持css的转换，由于css本身的设计不利于模块化和�
 
 ## karma
 
+## vscode
+### .bashrc
+···
+code () {
+   if [[ $# = 0 ]]
+   then
+       open -a "Visual Studio Code"
+   else
+       [[ $1 = /* ]] && F="$1" || F="$PWD/${1#./}"
+       open -a "Visual Studio Code" --args "$F"
+   fi
+}
+
+export VSCODE_TSJS=1
+
+’‘’
+### 特点
+1. 完美支持javascript开发。
+2. no tag page,only working files. 集中关注点。
+3. git集成
+4. nodejs和javacript调试集成。
+5. 流畅
+
+### 常用热键
++ CMD=WIN，OPT=ALT
++ CMD+ : 
+    - filename - jump to file
+    - > command palette
+    - ？HELP
+    - # symbol - open symbol
+    - @ symbol - goto symbol
+    - : number - goto line
+    - ! show error and warn message
+    - git command
+    - task (gulp_task)
++ CMD+SHIFT+p : command palette
++ CMD+a : 边栏开关
++ CMD+\ : 分栏编辑
++ CMD+a, CMD+c, CMD+c, CMD+v : 剪贴板操作
++ CMD+f, CMD+SHIFT+f, CMD+OPT+f : 查找，在项目文件中查找，替换
++ CMD+z, CMD+SHIFT+z :撤销，重做
++ CMD+s, CMD+SHIFT+s : 保存，另
++ CTRL+TAB, CTRL+_, CTRL+SHIFT+_ : 编辑历史
++ CTRL+a, +e, +b, +f, +p, +n  : 移动到行首，行尾，<-，->，up，down（和终端热键相同）
+
+### 代码重构
++ 多光标 
+    - CMD+OPT+向上箭头
+    - CMD+OPT+向下箭头
+    - OPT+鼠标单击
++ 将当前行上移或下移
+    - OPT+向上箭头
+    - OPT+向下箭头
++ 定位到下一个错误或警告 : F8
++ 重命名变量或符号
+    - F2 : in files
+    - CMD+F2 : in current file
++ 查看定义
+    - F12, CTRL+Click
+    - CTRL+OPT+Click : open in new...
+    - SHIFT+F12 : Peek 
+
+
+### 代码提示
+
+
+### Git
+
+### Debug
 
 
 # 组件
