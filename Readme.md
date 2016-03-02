@@ -92,15 +92,16 @@ postcss用于支持css的转换，由于css本身的设计不利于模块化和�
 5. 流畅
 
 ### 命令行
-'''
+```
 .bashrc or .bash_profile
 function code () { VSCODE_CWD="$PWD" open -n -b "com.microsoft.VSCode" --args "$@"; }
 
 export VSCODE_TSJS=1
+```
 
-’‘’
 ### 常用热键
 vscode包括很多热键，一些非常用的操作可以使用菜单或command palete来实现。
+  
 以下常用热键分为两类：（CMD=WIN，OPT=ALT）
 1. 经常或必须使用的功能：
 + CMD+p : 
@@ -116,9 +117,7 @@ vscode包括很多热键，一些非常用的操作可以使用菜单或command 
 + CMD+SHIFT+p : command palette
 + CMD+b : 边栏开关
 + CMD+\ : 分栏编辑
-
-
-
+  
 2. 通用热键：也可以用于终端或其它常用编辑器
 + CMD+a, CMD+c, CMD+c, CMD+v : 剪贴板操作
 + CMD+f, CMD+SHIFT+f, CMD+OPT+f : 查找，在项目文件中查找，替换
