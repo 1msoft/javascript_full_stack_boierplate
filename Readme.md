@@ -83,21 +83,7 @@ postcss用于支持css的转换，由于css本身的设计不利于模块化和�
 ## karma
 
 ## vscode
-### .bashrc
-···
-code () {
-   if [[ $# = 0 ]]
-   then
-       open -a "Visual Studio Code"
-   else
-       [[ $1 = /* ]] && F="$1" || F="$PWD/${1#./}"
-       open -a "Visual Studio Code" --args "$F"
-   fi
-}
 
-export VSCODE_TSJS=1
-
-’‘’
 ### 特点
 1. 完美支持javascript开发。
 2. no tag page,only working files. 集中关注点。
@@ -105,8 +91,18 @@ export VSCODE_TSJS=1
 4. nodejs和javacript调试集成。
 5. 流畅
 
+### 命令行
+'''
+.bashrc or .bash_profile
+function code () { VSCODE_CWD="$PWD" open -n -b "com.microsoft.VSCode" --args "$@"; }
+
+export VSCODE_TSJS=1
+
+’‘’
 ### 常用热键
-+ CMD=WIN，OPT=ALT
+vscode包括很多热键，一些非常用的操作可以使用菜单或command palete来实现。
+以下常用热键分为两类：（CMD=WIN，OPT=ALT）
+1. 经常或必须使用的功能：
 + CMD+p : 
     - filename - jump to file
     - > command palette
@@ -118,14 +114,20 @@ export VSCODE_TSJS=1
     - git command
     - task (gulp_task)
 + CMD+SHIFT+p : command palette
-+ CMD+a : 边栏开关
++ CMD+b : 边栏开关
 + CMD+\ : 分栏编辑
+
+
+
+2. 通用热键：也可以用于终端或其它常用编辑器
 + CMD+a, CMD+c, CMD+c, CMD+v : 剪贴板操作
 + CMD+f, CMD+SHIFT+f, CMD+OPT+f : 查找，在项目文件中查找，替换
 + CMD+z, CMD+SHIFT+z :撤销，重做
-+ CMD+s, CMD+SHIFT+s : 保存，另
++ CMD+s, CMD+SHIFT+s : 保存，另存
 + CTRL+TAB, CTRL+_, CTRL+SHIFT+_ : 编辑历史
-+ CTRL+a, +e, +b, +f, +p, +n  : 移动到行首，行尾，<-，->，up，down（和终端热键相同）
++ CTRL+a, +e, +b, +f, +p, +n  : 移动到行首，行尾，<-，->，up，down
++ CTRL+k : 删除到行尾
++ CMD + delete ：删除到行首
 
 ### 代码重构
 + 多光标 
