@@ -64,6 +64,7 @@
   "dependencies": {
     "co-fs": "^1.2.0",
     "co-view": "0.0.1",
+    "falcor": "^0.1.16",
     "history": "^2.0.0",
     "humps": "^1.0.0",
     "isomorphic-fetch": "^2.2.1",

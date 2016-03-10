@@ -96,4 +96,7 @@ export default function (app, config) {
     // passport
     app.use(passport.initialize());
     app.use(passport.session());
+
+    // falcor
+    
 }
