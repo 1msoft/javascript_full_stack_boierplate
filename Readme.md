@@ -2,8 +2,25 @@
 不像Java/C#等编程语言拥有完善的编程工具，javascript更像是黑客的语言，语言的可定制性很高，各种开发工具更是百花齐放，完全没有稳定下来的意思。
 组成一个javascript全栈开发团队，不仅要有统一的编程规范，而且需要建立一个boilerplate，使用团队确定的开发工具，组件和库组合。
 我们欢迎有共同观点的js程序员加入我们这个团队，同时我们保持开放的态度，欢迎和感谢来自社区的各种idea。
-# 工具链
-## 概述
+  
+本项目包括以下内容
+1. 编程语言及规范
+2. 工具链
+3. 前端组件
+4. WEB服务
+5. 代码生成器
+6. 函数、模板字符串、正则表达式（模式匹配）
+7. 应用程序结构及开发环境
+8. 部署方案
+
+# 1. 编程语言及规范
+全面采用ES6语法及其编程规范：http://www.kancloud.cn/kancloud/javascript-style-guide/43119 或 https://github.com/airbnb/javascript .
+  
+nodejs 6.0 LTS 基于 V8 5.0，支持es6的全部语法特性。但是前端代码需要通过babel转换为es5的语法，以保持更多的兼容性。
+  
+关注到事实上的标准google v8 及 microsoft typescript的发展，从目前来看在后端引入 async/await和decorator特性是可以尝试的，nodejs 7.0 stable 确定会支持async/await语法。
+# 2. 工具链
+## 工具链组合
 我们设想的javascript全栈开发，流程如下：
     
 + 编辑
@@ -91,13 +108,7 @@ postcss用于支持css的转换，由于css本身的设计不利于模块化和�
 4. nodejs和javacript调试集成。
 5. 流畅
 
-### 命令行
-```
-.bashrc or .bash_profile
-function code () { VSCODE_CWD="$PWD" open -n -b "com.microsoft.VSCode" --args "$@"; }
 
-export VSCODE_TSJS=1
-```
 
 ### 常用热键
 vscode包括很多热键，一些非常用的操作可以使用菜单或command palete来实现。
@@ -155,22 +166,38 @@ vscode包括很多热键，一些非常用的操作可以使用菜单或command 
 ### Debug
 
 
-# 组件
+# 2. 前端组件
 ## 框架
 ### react
 ### redux or relay
 
+
+# 3. WEB服务
 ### koa
 
-## 数据库
+## 数据服务
+### falcor
+### Restful API
 ### mongo
-
 ### mysql
 
+# 5. 代码生成器
+## 5.1 通用操作界面的生成
+### ListView/Edit
+### CardViewEdit
+### DetailView/Edit
+### MasterDetailView/Edit
 
+## 模型变更后的migrate
+ name base or id base migrate ?
  
+# 函数、模板字符串、模式匹配和正则表达式
 
-# 应用程序目录
+1. 使用函数封装业务规则，实现解耦、分层和组装。避免多个业务规则混杂在一个大型的if/else结构中。
+2. 使用模板字符串声明报文、sql，使得这些内容更加清晰和易于维护。
+3. 
+
+# 7. 应用程序结构及开发环境
 
   + project_root
     - docs  
@@ -193,3 +220,13 @@ vscode包括很多热键，一些非常用的操作可以使用菜单或command 
     - docker-compose.yml
     - docker_entrypoint.sh
     - Readme.md
+
+
+# 8. 部署方式
+##  PM2 + database service
+
+## PM2 + docker service
+
+## docker 
+
+## vagrant + VM （Windows，demo）
