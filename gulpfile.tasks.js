@@ -44,9 +44,9 @@ export default (gulp) => {
         // 删除 build 文件夹
         del(['build']);
 
-        // 新建并拷贝 index.html、global.config.js 文件
+        // 新建并拷贝 global.config.js 文件
         gulp
-            .src('global.config.js')
+            .src('./global.config.js')
             .pipe(gulp.dest('build'));
     }
 
