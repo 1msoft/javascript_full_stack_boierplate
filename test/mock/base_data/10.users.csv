@@ -1,7 +1,7 @@
 dddd,,,,
 username,name,password,role_id,zone_id
-admin,总管理员,$2a$10$vso7uZ67hDaRuuaQqU1IC.n2zGtNhpe41pu2aZotNB4F/87/2RCja,1,NULL
-admin1,福州管理员,$2a$10$vso7uZ67hDaRuuaQqU1IC.n2zGtNhpe41pu2aZotNB4F/87/2RCja,1,1
-admin2,三明管理员,$2a$10$vso7uZ67hDaRuuaQqU1IC.n2zGtNhpe41pu2aZotNB4F/87/2RCja,1,2
-user,普通用户,$2a$10$vso7uZ67hDaRuuaQqU1IC.n2zGtNhpe41pu2aZotNB4F/87/2RCja,2,1
-manager,主管,$2a$10$vso7uZ67hDaRuuaQqU1IC.n2zGtNhpe41pu2aZotNB4F/87/2RCja,3,1
+admin,总管理员,$2a$10$vso7uZ67hDaRuuaQqU1IC.n2zGtNhpe41pu2aZotNB4F/87/2RCja,1
+admin1,福州管理员,$2a$10$vso7uZ67hDaRuuaQqU1IC.n2zGtNhpe41pu2aZotNB4F/87/2RCja,1
+admin2,三明管理员,$2a$10$vso7uZ67hDaRuuaQqU1IC.n2zGtNhpe41pu2aZotNB4F/87/2RCja,1
+user,普通用户,$2a$10$vso7uZ67hDaRuuaQqU1IC.n2zGtNhpe41pu2aZotNB4F/87/2RCja,2
+manager,主管,$2a$10$vso7uZ67hDaRuuaQqU1IC.n2zGtNhpe41pu2aZotNB4F/87/2RCja,3

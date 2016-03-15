@@ -40,7 +40,7 @@ let specific = {
             host     : '127.0.0.1',
             user     : 'root',
             password : 'emsoft',
-            database : 'javascript_full_stack_boilerplate',
+            database : 'js_fullstack',
         },
     },
     production: {
@@ -53,7 +53,7 @@ let specific = {
             host     : '127.0.0.1',
             user     : 'root',
             password : 'emsoft',
-            database : 'javascript_full_stack_boilerplate',
+            database : 'js_fullstack',
         },
     },
 };
