@@ -1,5 +1,3 @@
-'use strict';
-
 import 'babel-polyfill'; // es6 generator support
 
 import Koa from 'koa';
@@ -9,9 +7,10 @@ import http from 'http';
  * Config import
  */
 import globalConfig from '../../global.config';
-import koaConfig from './config/koa';
-//import passportConfig from './config/passport';
-import routeConfig from './config/routes';
+import koaConfig from './middlewares/koa';
+//import passportConfig from './middlewares/passport';
+import routeConfig from './middlewares/routes';
+import modelRoutesConfig from './middlewares/model-routes'
 
 /**
  * Server
@@ -23,6 +22,11 @@ koaConfig(app, globalConfig);
  * Passport
  */
 //passportConfig();
+
+/**
+ * Model Routes
+ */
+modelRoutesConfig(app);
 
 /**
  * Routes

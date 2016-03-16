@@ -8,7 +8,7 @@ import del from 'del';
 import clientConfigGenerator from './webpack/webpack.client.config';
 import serverConfigGenerator from './webpack/webpack.server.config';
 
-import db_init from './src/server/config/models';
+import db_init from './src/server/db/initTables';
 
 /**
  * webpack 构建过程的控制台日志显示

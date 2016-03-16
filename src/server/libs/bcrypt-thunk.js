@@ -1,4 +1,3 @@
-"use strict";
 var bcrypt = require("bcrypt-nodejs");
 
 // These do not need to be promisified

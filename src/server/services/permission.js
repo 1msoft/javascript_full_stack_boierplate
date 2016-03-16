@@ -1,14 +1,4 @@
-'use strict';
-
-const permissions = require('../config/permissions');
-
-module.exports = {
-	getPermissions,
-	findPermission,
-	getPermissionWeight,
-	genPermissionCode,
-	getPermissionList,
-};
+import { permissions } from '../../../global.config';
 
 /**
  * 获取权限列表
@@ -76,3 +66,11 @@ function getPermissionList(permissionCode) {
 	}
 	return permissionList;
 }
+
+export default {
+	getPermissions,
+	findPermission,
+	getPermissionWeight,
+	genPermissionCode,
+	getPermissionList,
+};

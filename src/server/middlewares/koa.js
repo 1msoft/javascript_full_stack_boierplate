@@ -1,23 +1,18 @@
-'use strict';
+import koa from 'koa';
+import bodyParser from 'koa-bodyparser';
+import passport from 'koa-passport';
+import session from 'koa-generic-session';
+import logger from 'koa-logger';
+import path from 'path';
+import serve from 'koa-static-cache';
+import errorHandler from 'koa-errorhandler';
+import views from 'co-view';
 
-const koa = require('koa');
-const bodyParser = require('koa-bodyparser');
-const passport = require('koa-passport');
-const session = require('koa-generic-session');
-const logger = require('koa-logger');
-var path = require('path');
-var serve = require('koa-static-cache');
-const errorHandler = require('koa-errorhandler');
-const views = require('co-view');
+import config from '../../../global.config';
+import frontDevMiddleware from './front-dev-middleware';
 
-const config = require('../../../global.config');
-var STATIC_FILES_MAP = {};
-var SERVE_OPTIONS = { prefix:'/assets/', maxAge: 365 * 24 * 60 * 60 };
-
-import webpack from 'webpack';
-import webpackDevMiddleware from 'koa-webpack-dev-middleware';
-import webpackHotMiddleware from 'webpack-hot-middleware';
-import clientConfigGenerator from '../../../webpack/webpack.client.config';
+let STATIC_FILES_MAP = {};
+let SERVE_OPTIONS = { prefix:'/assets/', maxAge: 365 * 24 * 60 * 60 };
 
 export default function (app, config) {
 
@@ -34,25 +29,7 @@ export default function (app, config) {
      * webpack 的 webpack-dev-middleware 配置 - for development
      */
     if (config.app.env === 'development') {
-        const webpackConfig = clientConfigGenerator({ debug: true });
-        let compiler = webpack(webpackConfig);
-
-        app.use(webpackDevMiddleware(compiler, {
-            noInfo: true,
-            watchOptions: {
-                aggregateTimeout: 300,
-                poll: true,
-            },
-            stats: {
-                colors: true,
-            },
-            publicPath: webpackConfig.output.publicPath,
-        }));
-
-        app.use(function *(next) {
-            yield webpackHotMiddleware(compiler).bind(null, this.req, this.res);
-            yield next;
-        });
+        frontDevMiddleware(app);
     }
 
     //app.use(errorHandler({ debug: true }));
@@ -96,7 +73,4 @@ export default function (app, config) {
     // passport
     app.use(passport.initialize());
     app.use(passport.session());
-
-    // falcor
-    
 }

@@ -1,10 +1,8 @@
-'use strict';
-
 const LocalStrategy = require("passport-local").Strategy;
 const co = require('co');
 const passport = require('koa-passport');
 
-const authService = require('../src/services/authService');
+const authService = require('../services/authService');
 
 let serialize = function (user, done) {
   done(null, user.id);

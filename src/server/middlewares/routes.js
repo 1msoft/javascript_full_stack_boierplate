@@ -1,12 +1,9 @@
-'use strict';
-
 import Router from 'koa-router';
+import indexCtrl from '../controllers/indexCtrl';
+//const authCtrl = require('../controllers/authCtrl');
 
 const common = new Router();
 const router = new Router();
-
-import indexCtrl from '../controllers/indexCtrl';
-//const authCtrl = require('../controllers/authCtrl');
 
 export default (app) => {
 
@@ -16,10 +13,10 @@ export default (app) => {
     //common.all('/auth/logout', authCtrl.logout);
 
     app
-      .use(common.routes())
-      .use(common.allowedMethods());
+        .use(common.routes())
+        .use(common.allowedMethods());
 
-	app
-	  .use(router.routes())
-	  .use(router.allowedMethods());
+    app
+        .use(router.routes())
+        .use(router.allowedMethods());
 }

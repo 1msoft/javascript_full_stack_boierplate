@@ -3,12 +3,17 @@ import { connect } from 'react-redux'
 import { browserHistory } from 'react-router'
 import Explore from '../components/Explore'
 import { resetErrorMessage } from '../actions'
+import model from '../model'
 
 class App extends Component {
   constructor(props) {
     super(props)
     this.handleChange = this.handleChange.bind(this)
     this.handleDismissClick = this.handleDismissClick.bind(this)
+  }
+
+  componentWillMount() {
+    model.get('usersById').then( (result) => { console.log(result) });
   }
 
   handleDismissClick(e) {
