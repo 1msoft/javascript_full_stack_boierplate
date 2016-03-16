@@ -34,12 +34,16 @@ modelRoutesConfig(app);
 routeConfig(app);
 
 /**
- * Start Server
+ * Start Server - for production
  */
-var server = http.createServer(app.callback());
-server.listen(globalConfig.app.port);
 
-console.log('Server started, listening on port: ' + globalConfig.app.port);
-console.log('Environment:' + globalConfig.app.env);
+if (globalConfig.app.env === 'production') {
+    const server = http.createServer();
+    server.on('request', app);
+    server.listen(globalConfig.app.port, () => {
+        console.log('Server started, listening on port: ' + globalConfig.app.port);
+        console.log('Environment:' + globalConfig.app.env);
+    });
+}
 
-export default server;
+export default app;
