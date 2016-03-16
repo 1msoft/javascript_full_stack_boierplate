@@ -7,7 +7,8 @@ import app from './server';
  * Start Server - for development
  */
 const server = http.createServer();
-server.on('request', app.callback());
+let originApp = app.callback();
+server.on('request', originApp);
 server.listen(globalConfig.app.port, () => {
     console.log('Server started, listening on port: ' + globalConfig.app.port);
     console.log('Environment:' + globalConfig.app.env);
@@ -23,7 +24,8 @@ if(module.hot) {
         } catch (err) {
             console.error(err.stack);
         }
-        server.removeListener('request', app.callback());
-        server.on('request', hotApp.callback());
+        server.removeListener('request', originApp);
+        originApp = hotApp.callback();
+        server.on('request', originApp);
     });
 }
