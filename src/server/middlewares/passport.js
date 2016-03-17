@@ -1,4 +1,4 @@
-const LocalStrategy = require("passport-local").Strategy;
+const LocalStrategy = require('passport-local').Strategy;
 const co = require('co');
 const passport = require('koa-passport');
 

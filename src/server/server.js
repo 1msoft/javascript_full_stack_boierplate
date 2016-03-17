@@ -39,7 +39,7 @@ routeConfig(app);
 
 if (globalConfig.app.env === 'production') {
     const server = http.createServer();
-    server.on('request', app);
+    server.on('request', app.callback());
     server.listen(globalConfig.app.port, () => {
         console.log('Server started, listening on port: ' + globalConfig.app.port);
         console.log('Environment:' + globalConfig.app.env);

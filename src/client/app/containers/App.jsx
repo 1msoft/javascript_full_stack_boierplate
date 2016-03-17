@@ -13,7 +13,15 @@ class App extends Component {
   }
 
   componentWillMount() {
-    model.get('usersById').then( (result) => { console.log(result) });
+    model
+      .get(['users', [0,1], ['id', 'username', 'password']])
+      .then( () => { 
+        return model.call('users.add', [{ username: 'nihao', password: '12222'}, { username: 'nihao2', password: '12223'}])
+      }).then( () => { 
+        return model.call('users.remove', [5])
+      }).then( (result) => {
+          console.log(result);
+        });
   }
 
   handleDismissClick(e) {

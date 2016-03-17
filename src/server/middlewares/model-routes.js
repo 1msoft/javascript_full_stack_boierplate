@@ -1,36 +1,23 @@
 import mount from 'koa-mount';
 import router from 'falcor-koa-router';
+import fs from 'fs';
+import path from 'path';
 
-import User from '../models/User'
+let combineRoutes = () => {
+    let modelPath = path.resolve(process.cwd(), 'src', 'server', 'models');
+    let files = fs
+        .readdirSync(modelPath)
+        .filter( (file) => file.indexOf('.route') !== -1 );
+    
+    let combineRoutes = files.reduce( (routes, file) => {
+        let thisRoute = require( `../models/${file}` ).default;
+        return routes.concat( thisRoute );
+    }, []);
 
-let routes = [
-    {
-        route: 'usersById',
-        get: async (pathSet) => {
-            let users = await User.get();
-            
-            let aa = {};
-            users.forEach( (item) => {
-                aa[item.id] = item;
-            });
-
-            return { path: ['usersById'], value: aa };
-        },
-
-    }, {
-        route: 'users.length',
-        get: async () => {
-            var users = await user.count();
-            
-            users = users.map( (item) => {
-                return { ['' + item.id]: item };
-            });
-
-            return { path: ['xxx'], value: users };
-        },
-    },
-];
+    return combineRoutes;
+}
 
 export default (app) => {
+    let routes = combineRoutes();
     app.use( mount( '/model.json', router.routes(routes) ) );
 }

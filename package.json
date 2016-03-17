@@ -2,9 +2,10 @@
   "name": "javascript_full_stack_boilerplate",
   "version": "1.0.0",
   "description": "不像Java/C#等编程语言拥有完善的编程工具，javascript更像是黑客的语言，语言的可定制性很高，各种开发工具更是百花齐放，完全没有稳定下来的意思。 为了更好的推进javascript应用开发工程化，，需要有人专门收集和整合现有优秀的开发工具，库和UI组件等，力求做到开发效率最大化。本项目为以reactjs+webpack 的 boilerplate.",
-  "main": "./build/server/server.min.js",
+  "main": "./build/server/server.js",
   "scripts": {
-    "dev": "gulp dev & NODE_ENV=development node --harmony ./build/server/server.js",
+    "start": "NODE_ENV=development node --harmony ./build/server/server.js",
+    "dev": "gulp dev",
     "db:init": "gulp db:init",
     "db:mock": "gulp mock",
     "build": "gulp prod",
