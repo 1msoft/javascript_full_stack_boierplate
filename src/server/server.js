@@ -1,5 +1,3 @@
-'use strict';
-
 import 'babel-polyfill'; // es6 generator support
 
 import Koa from 'koa';
@@ -9,9 +7,10 @@ import http from 'http';
  * Config import
  */
 import globalConfig from '../../global.config';
-import koaConfig from './config/koa';
-//import passportConfig from './config/passport';
-import routeConfig from './config/routes';
+import koaConfig from './middlewares/koa';
+//import passportConfig from './middlewares/passport';
+import routeConfig from './middlewares/routes';
+import modelRoutesConfig from './middlewares/model-routes'
 
 /**
  * Server
@@ -25,17 +24,26 @@ koaConfig(app, globalConfig);
 //passportConfig();
 
 /**
+ * Model Routes
+ */
+modelRoutesConfig(app);
+
+/**
  * Routes
  */
 routeConfig(app);
 
 /**
- * Start Server
+ * Start Server - for production
  */
-var server = http.createServer(app.callback());
-server.listen(globalConfig.app.port);
 
-console.log('Server started, listening on port: ' + globalConfig.app.port);
-console.log('Environment:' + globalConfig.app.env);
+if (globalConfig.app.env === 'production') {
+    const server = http.createServer();
+    server.on('request', app.callback());
+    server.listen(globalConfig.app.port, () => {
+        console.log('Server started, listening on port: ' + globalConfig.app.port);
+        console.log('Environment:' + globalConfig.app.env);
+    });
+}
 
-export default server;
+export default app;

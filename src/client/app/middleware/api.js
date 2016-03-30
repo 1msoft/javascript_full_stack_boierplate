@@ -9,7 +9,7 @@ function getNextPageUrl(response) {
     return null
   }
 
-  const nextLink = link.split(',').find(s => s.indexOf('rel="next"') > -1)
+  const nextLink = link.split(',').find( (s) => s.indexOf('rel="next"') > -1)
   if (!nextLink) {
     return null
   }
@@ -25,8 +25,8 @@ function callApi(endpoint, schema) {
   const fullUrl = (endpoint.indexOf(API_ROOT) === -1) ? API_ROOT + endpoint : endpoint
 
   return fetch(fullUrl)
-    .then(response =>
-      response.json().then(json => ({ json, response }))
+    .then( (response) =>
+      response.json().then( (json) => ({ json, response }))
     ).then(({ json, response }) => {
       if (!response.ok) {
         return Promise.reject(json)
@@ -75,7 +75,7 @@ export const CALL_API = Symbol('Call API')
 
 // A Redux middleware that interprets actions with CALL_API info specified.
 // Performs the call and promises when such actions are dispatched.
-export default store => next => action => {
+export default (store) => (next) => (action) => {
   const callAPI = action[CALL_API]
   if (typeof callAPI === 'undefined') {
     return next(action)
@@ -97,7 +97,7 @@ export default store => next => action => {
   if (!Array.isArray(types) || types.length !== 3) {
     throw new Error('Expected an array of three action types.')
   }
-  if (!types.every(type => typeof type === 'string')) {
+  if (!types.every( (type) => typeof type === 'string')) {
     throw new Error('Expected action types to be strings.')
   }
 

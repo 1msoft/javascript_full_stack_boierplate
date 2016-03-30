@@ -1,5 +1,3 @@
-'use strict';
-
 let crypto = require('crypto');
 let Buffer = require('buffer').Buffer;
 

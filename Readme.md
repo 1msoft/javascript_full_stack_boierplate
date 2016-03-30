@@ -16,6 +16,9 @@
 
 # 1. 编程语言及规范
 全面采用ES6语法及其编程规范：http://www.kancloud.cn/kancloud/javascript-style-guide/43119 或 https://github.com/airbnb/javascript .
+
+airbnb JavaScript 规范 中文版：https://github.com/sivan/javascript-style-guide/blob/master/es5/README.mdairbnb React/JSX 规范：https://github.com/airbnb/javascript/tree/master/react
+airbnb CSS/SAS 规范：https://github.com/airbnb/css
   
 nodejs 6.0 LTS 基于 V8 5.0，支持es6的全部语法特性。但是前端代码需要通过babel转换为es5的语法，以保持更多的兼容性。
   

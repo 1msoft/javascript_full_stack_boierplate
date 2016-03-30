@@ -3,12 +3,25 @@ import { connect } from 'react-redux'
 import { browserHistory } from 'react-router'
 import Explore from '../components/Explore'
 import { resetErrorMessage } from '../actions'
+import model from '../model'
 
 class App extends Component {
   constructor(props) {
     super(props)
     this.handleChange = this.handleChange.bind(this)
     this.handleDismissClick = this.handleDismissClick.bind(this)
+  }
+
+  componentWillMount() {
+    model
+      .get(['users', [0,1], ['id', 'username', 'password']])
+      .then( () => { 
+        return model.call('users.add', [{ username: 'nihao', password: '12222'}, { username: 'nihao2', password: '12223'}])
+      }).then( () => { 
+        return model.call('users.remove', [5])
+      }).then( (result) => {
+          console.log(result);
+        });
   }
 
   handleDismissClick(e) {

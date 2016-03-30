@@ -1,4 +1,3 @@
-'use strict';
 const nodeExcel = require('excel-export-xlsx');
 const iconv = require('iconv-lite');
 const moment = require('moment');

@@ -24,7 +24,7 @@ gulp.task('dev', ['dev:client', 'dev:server']);              // 开发环境构�
  * 生产环境构建任务集合
  */
 gulp.task('prod:client', gulpTasks.prodClient);              // 生产环境构建任务：客户端构建
-gulp.task('prod:server', gulpTasks.prodClient);              // 生产环境构建任务：客户端构建
+gulp.task('prod:server', gulpTasks.prodServer);              // 生产环境构建任务：客户端构建
 gulp.task('prod', ['prod:client', 'prod:server']);           // 生产环境构建任务
 
 /**

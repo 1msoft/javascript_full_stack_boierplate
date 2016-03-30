@@ -1,5 +1,3 @@
-'use strict';
-
 const xml2js = require('xml2js');
 
 var parser = new xml2js.Parser({ explicitArray: false, explicitRoot: false });
