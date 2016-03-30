@@ -3,7 +3,8 @@
 组成一个javascript全栈开发团队，不仅要有统一的编程规范，而且需要建立一个boilerplate，使用团队确定的开发工具，组件和库组合。
 我们欢迎有共同观点的js程序员加入我们这个团队，同时我们保持开放的态度，欢迎和感谢来自社区的各种idea。
   
-本项目包括以下内容
+本项目包括以下内容:
+
 1. 编程语言及规范
 2. 工具链
 3. 前端组件
@@ -103,10 +104,11 @@ postcss用于支持css的转换，由于css本身的设计不利于模块化和�
 
 ### 特点
 1. 完美支持javascript开发。
-2. no tag page,only working files. 集中关注点。
-3. git集成
-4. nodejs和javacript调试集成。
-5. 流畅
+2. 集成GTD思想, 通过workfile来集中关注点。
+3. 项目管理功能,支持修改回滚
+3. 集成Git
+4. 内置nodejs和javacript调试。
+5. 代码提示
 
 
 
@@ -135,23 +137,53 @@ vscode包括很多热键，一些非常用的操作可以使用菜单或command 
     + CMD+f, CMD+SHIFT+f, CMD+OPT+f : 查找，在项目文件中查找，替换
     + CMD+z, CMD+SHIFT+z :撤销，重做
     + CMD+s, CMD+SHIFT+s : 保存，另存
-    + CTRL+TAB, CTRL+_, CTRL+SHIFT+_ : 编辑历史
+    + CTRL+TAB, CTRL-, CTRL+SHIFT- : 编辑历史
     + CTRL+a, +e, +b, +f, +p, +n  : 移动到行首，行尾，<-，->，up，down
     + CTRL+k : 删除到行尾
     + CMD + delete ：删除到行首
 
-### 代码重构
-+ 多光标 
-    - CMD+OPT+向上箭头
-    - CMD+OPT+向下箭头
-    - OPT+鼠标单击
-+ 将当前行上移或下移
-    - OPT+向上箭头
-    - OPT+向下箭头
-+ 定位到下一个错误或警告 : F8
+### 日常工作
+#### 项目文件管理
+1. CMD+B 打开关闭侧边栏
+2. 上方是WOKING FILES 为正在编辑修改的文件. 最佳策略是作为一个组合修改的全部文件,最好不要超过5个
+    - 提示未保存的文件, 不要同时编辑3个以上的文件.
+    - 批量保存(鼠标移动到WOKING FILES,有工具栏出现)
+    - 修改回滚(鼠标右键有菜单)
+    - 空间有限, 将处理好的文件关闭(点击文件名前方X) 
+    - 组合工作完成, 点击WOKING FILES 的全部关闭图标.
+3. 修改和Git的关系应该有对应关系
+    - 每个组合修改通过测试后,应作为一个Git提交.
+    - 单个Bug的修正应该作为一个Git提交.
+    - 不小心的修改会引起Git冲突, 可以使用Git工具下的回滚功能,回滚修改.
+    
+#### 代码编辑和重构
++ 编辑位置跳转
+    - CTRL- 或 SHIFT CTRL - :在修改位置之间跳转
+    - CTRL+TAB: 按住CTRL,每按一次TAB切换一个文件,松开CTRL进入编辑
+    
++ 多行编辑
+    - CMD+OPT+向上箭头: 按列位置向上建立多光标
+    - CMD+OPT+向下箭头: 按列位置向下建立多光标
+    - OPT+鼠标单击: 按点击建立多光标
+    - CMD+D: 选择光标所在单词, 按多次可以选中多个
+    - CMD+K CMD+D: 选择光标所在单词下一个出现位置建立下一个光标
+    - ESC 退出多行编辑
+    
 + 重命名变量或符号
     - F2 : in files
     - CMD+F2 : in current file
+    
++ 格式化代码
+    - OPT+SHIFT+F   
+    
++ 将当前行上移或下移
+    - OPT+向上箭头
+    - OPT+向下箭头
++ 复制当前行到下一行 
+    - SHIFT+OPT+向下箭头
+
++ 定位到下一个错误或警告 : F8
+
 + 查看定义
     - F12, CTRL+Click
     - CTRL+OPT+Click : open in new...
@@ -186,7 +218,7 @@ vscode包括很多热键，一些非常用的操作可以使用菜单或command 
 ### ListView/Edit
 ### CardViewEdit
 ### DetailView/Edit
-### MasterDetailView/Edit
+### 5.2 MasterDetailView/Edit
 
 ## 模型变更后的migrate
  name base or id base migrate ?
