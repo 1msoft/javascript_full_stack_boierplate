@@ -1,0 +1,67 @@
+version: '2'
+
+volumes:
+    mysql-data:
+        driver: local
+    mongo-data:
+        driver: local
+    appname-data:
+        driver: local
+
+networks:
+    appname_network:
+        driver: bridge
+    
+services:
+    mysql:
+        restart: always
+        image: mysql:5.7
+        environment:
+            MYSQL_DATABASE: appname_db
+            MYSQL_USER: appname
+            MYSQL_PASSWORD: appname_password
+            MYSQL_ROOT_PASSWORD: Ab_123456
+        volumes:
+            # Using a custom MySQL configuration file
+            - ./config/mysql:/etc/mysql/conf.d
+            # Create a data directory on the host system (outside the container)
+            - mysql-data:/var/lib/mysql
+        ports:
+            - "3306:3306"
+        networks:
+            - appname_network
+
+
+    mongo:
+        restart: always
+        image: mongo:3.2
+        volumes:
+            - mongo-data:/data/db
+        ports:
+            - "27017:27017"
+        networks:
+            - appname_network
+            
+    web:
+        restart: always
+        image: emsoft/appname:latest
+        environment:
+            # 从环境变量获取主机地址
+            DATABASE_HOST: mysql
+            MONGO_HOST: mongo
+        volumes:
+            # Application directory
+            # 应用配置文件
+            - ./config:/var/webapps/config
+            # 输入文件,如初始化数据或补丁脚本
+            - ./files:/var/webapps/files
+            # 应用输出,包括日志等
+            - appname-data:/var/webapps/data
+            # 运行程序,用于替换image内的运行程序
+            #- ./build:/var/webapps/build         
+        ports:
+            - "3000:80"
+        networks:
+            - appname_network
+            
+        command: npm start
