@@ -46,7 +46,7 @@ services:
         restart: always
         image: emsoft/appname:latest
         environment:
-            # 从环境变量获取主机地址
+            # 服务主机地址
             DATABASE_HOST: mysql
             MONGO_HOST: mongo
         volumes:
@@ -54,11 +54,11 @@ services:
             # 应用配置文件
             - ./config:/var/webapps/config
             # 输入文件,如初始化数据或补丁脚本
-            - ./files:/var/webapps/files
+            - ./share:/var/webapps/mnt
             # 应用输出,包括日志等
-            - appname-data:/var/webapps/data
+            - appname-data:/var/webapps/logs
             # 运行程序,用于替换image内的运行程序
-            #- ./build:/var/webapps/build         
+            #- ./dist:/var/webapps/dist         
         ports:
             - "3000:80"
         networks:
